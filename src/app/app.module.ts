@@ -12,6 +12,10 @@ import { AppComponent } from './app.component';
 // Modules
 import { RoutingModule } from './modules/routing/routing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { MaterialModule } from './modules/material/material.module';
+
+// Services
+import { SidenavService } from './shared/services/sidenav.service';
 
 @NgModule({
     declarations: [
@@ -21,14 +25,16 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
         BrowserModule,
         RoutingModule,
         BrowserAnimationsModule,
-        DashboardModule
+        DashboardModule,
+        MaterialModule
     ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,
             multi: true
-        }
+        },
+        SidenavService
     ],
     bootstrap: [AppComponent]
 })
