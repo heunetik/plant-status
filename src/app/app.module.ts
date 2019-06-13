@@ -1,13 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Interceptors
+import { HttpErrorInterceptor } from './shared/interceptor/httperror.interceptor';
 
 // Components
 import { AppComponent } from './app.component';
 
 // Modules
 import { RoutingModule } from './modules/routing/routing.module';
-import { MaterialModule } from './modules/material/material.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
     declarations: [
@@ -16,10 +20,16 @@ import { MaterialModule } from './modules/material/material.module';
     imports: [
         BrowserModule,
         RoutingModule,
-        MaterialModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        DashboardModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpErrorInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 

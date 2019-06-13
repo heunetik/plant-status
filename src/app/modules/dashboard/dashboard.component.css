@@ -1,0 +1,28 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+
+mat-toolbar {
+    justify-content: space-between;
+}
+
+mat-card {
+    display: flex;
+    margin: 10px 0px 10px 0px;
+}
+
+#content {
+    margin: 0 1% 0 1%;
+}
+
+.card-button {
+    flex: 1;
+    margin: 0px 5px 0px 5px;
+}
+
+.done {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+}

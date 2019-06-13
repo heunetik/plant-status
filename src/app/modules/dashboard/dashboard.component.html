@@ -1,0 +1,31 @@
+<div>
+    <mat-toolbar color="primary">
+        <span>
+            <mat-icon>whatshot</mat-icon>
+        </span>
+
+        <span>Dashboard</span>
+
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <span class="done">
+        <button (click)="componentDebug()" mat-fab>
+            <mat-icon>check circle</mat-icon>
+        </button>
+    </span>
+
+    <div id="content">
+        <mat-card *ngFor="let d of bmeData">
+            <button class="card-button" mat-raised-button>{{ d.temperature }}&#176;</button>
+            <button class="card-button" mat-raised-button>{{ d.humidity }}%</button>
+            <button class="card-button" mat-raised-button>{{ d.pressure }} hPa</button>
+        </mat-card>
+    </div>
+    <mat-menu x-position="before" #menu="matMenu">
+        <button mat-menu-item>foo</button>
+        <button mat-menu-item>bar</button>
+    </mat-menu>
+</div>
