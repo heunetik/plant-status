@@ -1,13 +1,13 @@
-<mat-sidenav-container>
+<mat-sidenav-container fullscreen>
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
         <mat-nav-list>
             <a mat-list-item routerLink="/">
-                <mat-icon>home</mat-icon>
-                <span>Home</span>
+                <mat-icon>show_chart</mat-icon>
+                <span>Dashboard</span>
             </a>
             <a mat-list-item routerLink="/cake">
-                <mat-icon>cake</mat-icon>
-                <span>Cake?</span>
+                <mat-icon>scatter_plot</mat-icon>
+                <span>BME280</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>

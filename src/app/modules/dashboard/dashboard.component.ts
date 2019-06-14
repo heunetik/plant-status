@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
     constructor(private dashboardService: DashboardService, private sidenavService: SidenavService) { }
 
     bmeData: BMEData[];
+    latestData: any;
 
     ngOnInit() {
         this.getBMEData();
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
     getBMEData() {
         let obs = this.dashboardService.getBMEData().subscribe(data => {
             this.bmeData = data;
+            this.latestData = Object.entries(data[data.length - 1]);
             obs.unsubscribe();
         });
     }

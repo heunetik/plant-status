@@ -20,10 +20,15 @@
     </span>
 
     <div id="content">
-        <mat-card *ngFor="let d of bmeData">
-            <button class="card-button" mat-raised-button>{{ d.temperature }}&#176;</button>
-            <button class="card-button" mat-raised-button>{{ d.humidity }}%</button>
-            <button class="card-button" mat-raised-button>{{ d.pressure }} hPa</button>
+        <mat-card class="data-card" *ngFor="let d of latestData">
+            <mat-card-header>
+                <div class="avatar" mat-card-avatar><mat-icon [inline]="true">wifi_tethering</mat-icon></div>
+                <mat-card-title>{{ d[0] | titlecase }}</mat-card-title>
+                <mat-card-subtitle>read from BME280</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <span class="data-reading">{{ d[1] }}</span>
+            </mat-card-content>
         </mat-card>
     </div>
     <mat-menu x-position="before" #menu="matMenu">
