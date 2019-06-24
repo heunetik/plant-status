@@ -1,6 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
-import { SidenavService } from './shared/services/sidenav.service';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -8,15 +6,9 @@ import { SidenavService } from './shared/services/sidenav.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild("sidenav", { static: true }) public sidenav: MatSidenav;
-    title = 'plantStatus';
-    opened: boolean;
+    title = 'Plant Status';
 
-    constructor(private sidenavService: SidenavService) {
-    }
-
-    ngOnInit(): void {
-        this.sidenavService.setSidenav(this.sidenav);
+    constructor() {
     }
 }
 

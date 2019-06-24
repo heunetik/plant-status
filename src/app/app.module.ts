@@ -15,7 +15,6 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { MaterialModule } from './modules/material/material.module';
 
 // Services
-import { SidenavService } from './shared/services/sidenav.service';
 
 @NgModule({
     declarations: [
@@ -33,8 +32,7 @@ import { SidenavService } from './shared/services/sidenav.service';
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,
             multi: true
-        },
-        SidenavService
+        }
     ],
     bootstrap: [AppComponent]
 })

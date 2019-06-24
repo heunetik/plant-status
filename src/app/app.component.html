@@ -1,18 +1,25 @@
-<mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+<mat-sidenav-container class="sidenav-container" fullscreen>
+    <mat-sidenav #sidenav class="sidenav" fixedInViewport>
+        <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item routerLink="/">
+            <a mat-list-item routerLink="/" routerLinkActive="router-link-active">
                 <mat-icon>show_chart</mat-icon>
                 <span>Dashboard</span>
             </a>
-            <a mat-list-item routerLink="/cake">
+            <a mat-list-item routerLink="/cake" routerLinkActive="router-link-active">
                 <mat-icon>scatter_plot</mat-icon>
                 <span>BME280</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>
-
     <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Dashboard</span>
+        </mat-toolbar>
+        <!-- Add Content Here -->
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

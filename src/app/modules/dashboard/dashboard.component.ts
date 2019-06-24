@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './services/dashboard.service';
-import { SidenavService } from 'src/app/shared/services/sidenav.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,7 +8,7 @@ import { SidenavService } from 'src/app/shared/services/sidenav.service';
 })
 export class DashboardComponent implements OnInit {
 
-    constructor(private dashboardService: DashboardService, private sidenavService: SidenavService) { }
+    constructor(private dashboardService: DashboardService) { }
 
     bmeData: BMEData[];
     latestData: any;
@@ -28,9 +27,5 @@ export class DashboardComponent implements OnInit {
 
     componentDebug() {
         console.log(this.bmeData);
-    }
-
-    toggleSidenav() {
-        this.sidenavService.toggle();
     }
 }
