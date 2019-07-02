@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Interceptors
-import { HttpErrorInterceptor } from './shared/interceptor/httperror.interceptor';
+import { ErrorInterceptor } from './shared/interceptor/error.interceptor';
+import { JwtInterceptor } from './shared/interceptor/jwt.interceptor';
 
 // Components
 import { AppComponent } from './app.component';
@@ -17,7 +18,6 @@ import { LoginModule } from './modules/login/login.module';
 
 // Guards
 import { AuthGuard } from './shared/guards/auth.guard';
-import { NegateAuthGuard } from './shared/guards/negate-auth.guard';
 
 // Services
 
@@ -34,13 +34,10 @@ import { NegateAuthGuard } from './shared/guards/negate-auth.guard';
         MaterialModule
     ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpErrorInterceptor,
-            multi: true
-        },
-        AuthGuard,
-        NegateAuthGuard
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        // TODO: Uncomment when no external requests are made.
+        // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        AuthGuard
     ],
     bootstrap: [AppComponent]
 })

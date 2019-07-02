@@ -1,7 +1,7 @@
-<ng-container *ngIf="!(isLoggedIn$ | async)">
+<ng-container *ngIf="!currentUser">
     <app-login></app-login>
 </ng-container>
-<ng-container *ngIf="isLoggedIn$ | async">
+<ng-container *ngIf="currentUser">
     <mat-sidenav-container class="sidenav-container" fullscreen>
         <mat-sidenav #sidenav class="sidenav" fixedInViewport>
             <mat-toolbar>Menu</mat-toolbar>

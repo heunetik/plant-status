@@ -5,6 +5,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Components
 import { DashboardComponent } from './dashboard.component';
+
+// Services
 import { DashboardService } from './services/dashboard.service';
 
 // Modules

@@ -2,7 +2,7 @@ import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SubscriptionLike, Observable } from 'rxjs';
-import { LoginService } from './modules/login/services/login.service';
+import { AuthService } from './modules/login/services/auth.service';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -13,18 +13,18 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
     @ViewChild("sidenav", { static: true }) public sidenav: MatSidenav;
     title = 'Plant Status';
-    isLoggedIn$: Observable<boolean>;  
+    isLoggedIn$: Observable<boolean>;
+    currentUser: User;
 
-    constructor(private router: Router, private loginService: LoginService) {
+    constructor(private router: Router, private authService: AuthService) {
         router.events.subscribe((event: any) => {
             if (event instanceof NavigationStart && this.sidenav) {
                 this.sidenav.close();
             }
         });
-    }
-
-    ngOnInit() {
-        this.isLoggedIn$ = this.loginService.isLoggedIn;
+        authService.currentUser.subscribe((user: User) => {
+            this.currentUser = this.authService.currentUserValue;
+        });
     }
 }
 
