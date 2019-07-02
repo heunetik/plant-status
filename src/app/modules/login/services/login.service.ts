@@ -1,11 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class LoginService {
-    private url = '';
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private http: HttpClient) { }
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  constructor(
+    private router: Router
+  ) {}
+
+  login(user: User) {
+    if (user.username !== '' && user.password !== '' ) {
+      this.loggedIn.next(true);
+      this.router.navigate(['/']);
+    }
+  }
+
+  logout() {
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']);
+  }
 }

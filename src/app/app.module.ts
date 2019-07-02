@@ -15,6 +15,10 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { MaterialModule } from './modules/material/material.module';
 import { LoginModule } from './modules/login/login.module';
 
+// Guards
+import { AuthGuard } from './shared/guards/auth.guard';
+import { NegateAuthGuard } from './shared/guards/negate-auth.guard';
+
 // Services
 
 @NgModule({
@@ -34,7 +38,9 @@ import { LoginModule } from './modules/login/login.module';
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,
             multi: true
-        }
+        },
+        AuthGuard,
+        NegateAuthGuard
     ],
     bootstrap: [AppComponent]
 })
