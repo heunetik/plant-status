@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './modules/routing/routing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { MaterialModule } from './modules/material/material.module';
+import { LoginModule } from './modules/login/login.module';
 
 // Services
 
@@ -25,6 +26,7 @@ import { MaterialModule } from './modules/material/material.module';
         RoutingModule,
         BrowserAnimationsModule,
         DashboardModule,
+        LoginModule,
         MaterialModule
     ],
     providers: [
