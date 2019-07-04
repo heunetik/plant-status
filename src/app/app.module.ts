@@ -15,6 +15,7 @@ import { RoutingModule } from './modules/routing/routing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { MaterialModule } from './modules/material/material.module';
 import { LoginModule } from './modules/login/login.module';
+import { UserModule } from './modules/user/user.module';
 
 // Guards
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -31,6 +32,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
         BrowserAnimationsModule,
         DashboardModule,
         LoginModule,
+        UserModule,
         MaterialModule
     ],
     providers: [
