@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild("sidenav", { static: true }) public sidenav: MatSidenav;
+    @ViewChild("sidenav", { static: false }) public sidenav: MatSidenav;
     title = 'Plant Status';
     isLoggedIn$: Observable<boolean>;
     currentUser: User;
