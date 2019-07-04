@@ -1,22 +1,18 @@
 <div class="signin-content">
-    <mat-card>
+    <mat-card class="mat-elevation-z8">
         <mat-card-content>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <p>Please login to continue</p>
+                <h2>Please log in to continue</h2>
                 <mat-form-field class="full-width-input">
                     <input matInput type="text" formControlName="username" placeholder="User" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.username.errors }" required/>
-                    <ng-container *ngIf="submitted && loginForm.controls.username.errors">
-                        <mat-error *ngIf="loginForm.controls.username.errors.required">Username is required</mat-error>
-                    </ng-container>
+                    <mat-error *ngIf="loginForm.controls.username.errors && loginForm.controls.username.errors.required">Username is required</mat-error>
                 </mat-form-field>
                 <mat-form-field class="full-width-input">
                     <input matInput type="password" formControlName="password" autocomplete="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }" required/>
-                    <ng-container *ngIf="submitted && loginForm.controls.password.errors">
-                            <mat-error *ngIf="loginForm.controls.password.errors.required">Password is required</mat-error>
-                        </ng-container>
+                    <mat-error *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors.required">Password is required</mat-error>
                 </mat-form-field>
                 <mat-card *ngIf="error">{{error}}</mat-card>
-                <button mat-raised-button color="primary">Login</button>
+                <button mat-raised-button color="primary">Log in</button>
             </form>
         </mat-card-content>
     </mat-card>
