@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { first, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -10,7 +11,8 @@ import { first } from 'rxjs/operators';
     styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+    destroy$: Subject<boolean> = new Subject<boolean>();
     loginForm: FormGroup;
     loading = false;
     submitted = false;
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
         });
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
     }
 
     onSubmit() {
@@ -49,7 +51,10 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
-            .pipe(first())
+            .pipe(
+                first(),
+                takeUntil(this.destroy$)
+            )
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
@@ -57,6 +62,12 @@ export class LoginComponent implements OnInit {
                 error => {
                     this.error = error;
                     this.loading = false;
-                });
+                }
+            );
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
     }
 }

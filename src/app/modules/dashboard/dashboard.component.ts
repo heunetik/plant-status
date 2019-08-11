@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from '../login/services/auth.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
     constructor(private dashboardService: DashboardService) { }
 
+    destroy$: Subject<boolean> = new Subject<boolean>();
     bmeData: BMEData[];
     latestData: any;
 
@@ -19,14 +22,18 @@ export class DashboardComponent implements OnInit {
     }
 
     getBMEData() {
-        let obs = this.dashboardService.getBMEData().subscribe(data => {
+        this.dashboardService.getBMEData().pipe(takeUntil(this.destroy$)).subscribe(data => {
             this.bmeData = data;
             this.latestData = Object.entries(data[data.length - 1]);
-            obs.unsubscribe();
         });
     }
 
     componentDebug() {
         console.log(this.bmeData);
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
     }
 }
