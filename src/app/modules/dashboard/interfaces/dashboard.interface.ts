@@ -1,4 +1,4 @@
-interface BMEData {
+export interface BMEData {
     temperature: number;
     humidity: number;
     pressure: number;

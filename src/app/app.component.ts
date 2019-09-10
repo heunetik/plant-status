@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { SubscriptionLike, Observable } from 'rxjs';
 import { AuthService } from './modules/login/services/auth.service';
 import { map } from 'rxjs/operators';
+import { User } from './shared/interfaces/user.interface';
 
 @Component({
     selector: 'app-root',

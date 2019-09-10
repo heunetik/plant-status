@@ -3,6 +3,7 @@ import { DashboardService } from './services/dashboard.service';
 import { AuthService } from '../login/services/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { BMEData } from './interfaces/dashboard.interface';
 
 @Component({
     selector: 'app-dashboard',
