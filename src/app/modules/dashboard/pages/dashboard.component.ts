@@ -1,17 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DashboardService } from './services/dashboard.service';
-import { AuthService } from '../login/services/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { BMEData } from './interfaces/dashboard.interface';
+import { BMEData } from 'src/app/shared/models/dashboard.interface';
+import { DashboardService } from 'src/app/core/services/dashboard/dashboard.service';
 
 @Component({
-    selector: 'app-dashboard',
+    selector: 'ps-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-
     constructor(private dashboardService: DashboardService) { }
 
     destroy$: Subject<boolean> = new Subject<boolean>();

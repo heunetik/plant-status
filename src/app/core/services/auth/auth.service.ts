@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/shared/interfaces/user.interface';
+import { User } from 'src/app/shared/models/user.interface';
 
 @Injectable()
 export class AuthService {

@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from './services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
-    selector: 'app-login',
+    selector: 'ps-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent implements OnInit, OnDestroy {

@@ -1,35 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Components
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from './pages/dashboard.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-// Services
-import { DashboardService } from './services/dashboard.service';
-
-// Modules
-import { MaterialModule } from '../material/material.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpClientModule,
-        MaterialModule
+        SharedModule
     ],
     declarations: [
         DashboardComponent
-    ],
-    exports: [
-        DashboardComponent
-    ],
-    entryComponents: [
-    ],
-    providers: [
-        HttpClient,
-        DashboardService
     ]
 })
 export class DashboardModule { }
