@@ -1,0 +1,25 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title>
+            <h3>User Profile</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            About
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Expand for additional information
+                            <mat-icon>person</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Personal Statement"></textarea>
+                    </mat-form-field>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>

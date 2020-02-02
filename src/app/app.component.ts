@@ -1,17 +1,16 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
-import { SubscriptionLike, Observable } from 'rxjs';
-import { AuthService } from './modules/login/services/auth.service';
-import { map } from 'rxjs/operators';
-
+import { Observable } from 'rxjs';
+import { User } from './shared/models/user.interface';
+import { AuthService } from './core/services/auth/auth.service';
 @Component({
-    selector: 'app-root',
+    selector: 'ps-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    @ViewChild("sidenav", { static: false }) public sidenav: MatSidenav;
+    @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
     title = 'Plant Status';
     isLoggedIn$: Observable<boolean>;
     currentUser: User;
