@@ -10,7 +10,7 @@ import { AuthService } from './core/services/auth/auth.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
+    @ViewChild('sidenav') public sidenav: MatSidenav;
     title = 'Plant Status';
     isLoggedIn$: Observable<boolean>;
     currentUser: User;
